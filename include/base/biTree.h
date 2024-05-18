@@ -9,7 +9,6 @@ struct biTree {
 /**
     通过先序序列和中序序列初始化一个二叉树
     后序序列和中序序列的解决方案一致
-    ps：该方案还可以优化一下，其实通过中序序列确定左子树之后，前序遍历不用那么麻烦了
 */
 template<typename T>
 biTree<T> * initTreePreIn(std::vector<T> pre, std::vector<T> in) {
@@ -23,16 +22,6 @@ biTree<T> * initTreePreIn(std::vector<T> pre, std::vector<T> in) {
     std::vector<T> rInTree(rootnode + 1, in.end());
     std::vector<T> lPreTree(pre.begin() + 1, pre.begin() + 1 + lInTree.size());
     std::vector<T> rPreTree(pre.begin() + 1 + lInTree.size(), pre.end());
-    // old method
-    // std::vector<T> lPreTree;
-    // std::vector<T> rPreTree;
-    // for (auto i : pre) {
-    //     if (std::find(lInTree.begin(), lInTree.end(), i) != lInTree.end()) {
-    //         lPreTree.emplace_back(i);
-    //     } else if (std::find(rInTree.begin(), rInTree.end(), i) != rInTree.end()) {
-    //         rPreTree.emplace_back(i);
-    //     }
-    // }
     root->lchild = initTreePreIn(lPreTree, lInTree);
     root->rchild = initTreePreIn(rPreTree, rInTree);
     return root;
