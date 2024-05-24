@@ -1,12 +1,11 @@
 #include <iostream>
-#include "base/biTree.h"
+#include "base/biSortTree.h"
+
 int main() {
-    std::string pre_ = "ABCDEFGHI";
-    std::vector<char> pre(9, '\0');
-    memcpy(pre.data(), pre_.data(), 9);
-    std::string in_ = "BCAEDGHFI";
-    std::vector<char> in(9, '\0');
-    memcpy(in.data(), in_.data(), 9);
-    auto tree = initTreePreIn<char>(pre, in);
+    std::vector<int> val = {53, 17, 9, 45, 23, 78, 65, 87};
+    BinarySortTree *tree = new BinarySortTree(val);
+    auto node65 = tree->search(45);
+    tree->insertNode(66);
+    auto delenode = tree->deleteNode(17);
     return 0;
 }

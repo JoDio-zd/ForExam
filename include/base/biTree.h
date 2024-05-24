@@ -1,9 +1,13 @@
+#pragma once
 #include <iostream>
 #include <vector>
 template<typename T>
 struct biTree {
     T data;
     biTree* lchild = nullptr, * rchild = nullptr;
+    biTree() {};
+    biTree(T t) {data = t;}
+    biTree(T t, biTree *l, biTree *r) {lchild = l; rchild = r;}
 };
 
 /**
@@ -41,15 +45,15 @@ void preOrder (biTree<T> *tree) {
 }
 
 template<typename T>
-void inOrder (biTree<T> *tree) {
+void inOrder (biTree<T> *tree, std::vector<T>& seq) {
     if (tree->lchild != nullptr) {
-        inOrder(tree->lchild);
+        inOrder(tree->lchild, seq);
     }
     if (tree != nullptr) {
-        std::cout << tree->data << std::endl;
+        seq.emplace_back(tree->data);
     }
     if (tree->rchild != nullptr) {
-        inOrder(tree->rchild);
+        inOrder(tree->rchild, seq);
     }
 }
 
@@ -63,5 +67,70 @@ void postOrder (biTree<T> *tree) {
     }
     if (tree != nullptr) {
         std::cout << tree->data << std::endl;
+    }
+}
+
+// 上面的遍历是使用递归实现的，接下来使用非递归实现三种顺序的遍历
+
+#include <stack>
+template<typename T>
+void preOrderS(biTree<T> *tree) {
+    std::stack<biTree<T> *> nodes;
+    biTree<T>* root = tree;
+    while (1) {
+        if (root != nullptr) {
+            std::cout << root->data << std::endl;
+            nodes.push(root);
+            root = root->lchild;
+            continue;
+        }
+        if (nodes.empty()) {
+            break;
+        }
+        root = nodes.top()->rchild;
+        nodes.pop();
+    }
+}
+
+template<typename T>
+void inOrderS(biTree<T>* tree) {
+    std::stack<biTree<T>*> nodes;
+    biTree<T>* root = tree;
+    while (1) {
+        if (root != nullptr) {
+            nodes.push(root);
+            root = root->lchild;
+            continue;
+        }
+        if (nodes.empty()) {
+            break;
+        }
+        std::cout << nodes.top()->data << std::endl;
+        root = nodes.top()->rchild;
+        nodes.pop();
+    }
+}
+
+template<typename T>
+void postOrderS(biTree<T>* tree) {
+    std::stack<biTree<T>*> nodes;
+    biTree<T>* root = tree;
+    while (1) {
+        if (root != nullptr) {
+            nodes.push(root);
+            root = root->lchild;
+            continue;
+        }
+        if (nodes.empty()) {
+            break;
+        }
+        biTree<T>* top = nodes.top();
+        if (top->rchild == nullptr) {
+            std::cout << top->data << std::endl;
+            nodes.pop();
+        }
+        else {
+            root = top->rchild;
+        }
     }
 }

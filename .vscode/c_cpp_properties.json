@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/include/",
+                "E:/my app/Visual Studio/VC/Tools/MSVC/14.39.33519/include",
+                "E:/my app/Visual Studio/VC/Tools/MSVC/14.39.33519/atlmfc/include",
+                "E:/my app/Visual Studio/VC/Auxiliary/VS/include",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/ucrt",
+                "E:/my app/Visual Studio/VC/Auxiliary/VS/UnitTest/include",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/shared",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/winrt",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/cppwinrt"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "intelliSenseMode": "windows-msvc-x64",
+            "cppStandard": "c++17",
+            "compilerPath": "e:/my app/visual studio/vc/tools/msvc/14.39.33519/bin/hostx64/x64/cl.exe"
+        }
+    ],
+    "version": 4
+}

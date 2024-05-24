@@ -1,0 +1,7 @@
+{
+    "C_Cpp.default.compilerPath": "e:/my app/visual studio/vc/tools/msvc/14.39.33519/bin/hostx64/x64/cl.exe",
+    "files.associations": {
+        "iostream": "cpp",
+        "vector": "cpp"
+    }
+}
